@@ -8,33 +8,41 @@
 
 ```
 GW/
-├── 00-bwcut/              # Blackwell + CUTLASS 开发
-│   ├── arch-notes/        #   Blackwell SM 架构笔记（TMA/TMEM/tcgen05.mma）
-│   ├── cutlass-examples/  #   CUTLASS 示例代码与学习记录
-│   ├── kernels/           #   手写 CUDA Kernel 实现
-│   └── perf-notes/        #   性能优化笔记与 Roofline 分析
+├── 00-bw-cutlass-ops/         # Blackwell + CUTLASS 算子开发
+│   ├── 00-arch-notes/         #   Blackwell SM 架构笔记（TMA/TMEM/tcgen05.mma）
+│   ├── 01-cutlass-examples/   #   CUTLASS 示例代码与学习记录
+│   ├── 02-kernel-codes/       #   手写 CUDA Kernel 实现
+│   └── 03-perf-notes/         #   性能优化笔记与 Roofline 分析
 │
-├── 01-dfops/              # 东方算芯 (DF1000) 算子库
-│   ├── arch-notes/        #   DF1000 架构笔记（软件定义+3D堆叠近存计算）
-│   ├── ops-lib/           #   算子库设计与接口定义
-│   ├── kernels/           #   算子 Kernel 实现
-│   └── perf-notes/        #   性能调优记录
+├── 01-df1000-opslib/          # 东方算芯 DF1000 算子库
+│   ├── 00-arch-notes/         #   DF1000 架构笔记（软件定义+3D堆叠近存计算）
+│   ├── 01-ops-design/         #   算子库设计与接口定义
+│   ├── 02-kernel-codes/       #   算子 Kernel 实现
+│   └── 03-perf-notes/         #   性能调优记录
 │
-├── 02-triton/             # Triton 算子开发
-│   ├── learn-notes/       #   Triton 语法与编程模型学习
-│   ├── examples/          #   Triton Kernel 示例
-│   ├── blackwell/         #   Blackwell Triton (tcgen05) 专项
-│   └── perf-notes/        #   Triton 性能优化笔记
+├── 02-triton-kernels/         # Triton 算子开发
+│   ├── 00-learn-notes/         #   Triton 语法与编程模型学习
+│   ├── 01-example-codes/       #   Triton Kernel 示例代码
+│   ├── 02-bw-optimize/       #   Blackwell Triton (tcgen05) 专项优化
+│   └── 03-perf-notes/        #   Triton 性能优化笔记
 │
-├── auto-commit.ps1        # 每日凌晨 3:00 自动提交脚本
-└── auto-commit.log        # 自动提交日志
+├── auto-commit.ps1            # 每日凌晨 3:00 自动提交脚本
+└── auto-commit.log            # 自动提交日志
 ```
+
+---
+
+## 命名规则
+
+- **顶级目录**：`序号-词根-缩写`，如 `00-bw-cutlass-ops`（bw=Blackwell, cutlass=CUTLASS, ops=operators）
+- **子目录**：`序号-词根`，如 `00-arch-notes`（架构笔记）、`02-kernel-codes`（Kernel 代码）
+- 所有名称 ≤ 20 字符，望文知意
 
 ---
 
 ## 各目录说明
 
-### 00-bwcut — Blackwell CUTLASS
+### 00-bw-cutlass-ops — Blackwell CUTLASS
 
 NVIDIA Blackwell 架构下的 CUTLASS 算子开发。重点关注：
 
@@ -42,7 +50,7 @@ NVIDIA Blackwell 架构下的 CUTLASS 算子开发。重点关注：
 - **CUTLASS 4.x**：SM100 GEMM、CuTe DSL、2-CTA MMA 协作
 - **精度支持**：FP4 (NVFP4/FP6/FP8)、TF32、FP16/BF16、INT8、MX 块缩放
 
-### 01-dfops — 东方算芯算子库
+### 01-df1000-opslib — 东方算芯 DF1000 算子库
 
 东方算芯 DF1000 芯片的算子库开发。重点关注：
 
@@ -50,7 +58,7 @@ NVIDIA Blackwell 架构下的 CUTLASS 算子开发。重点关注：
 - **多精度支持**：FP32/FP16/BF16/FP8/FP4 动态重构
 - **算子库**：GEMM、Attention、LayerNorm 等核心算子实现
 
-### 02-triton — Triton 算子开发
+### 02-triton-kernels — Triton 算子开发
 
 Triton 语言算子开发，跨平台 (NVIDIA / 国产芯片)。重点关注：
 
