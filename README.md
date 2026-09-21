@@ -26,7 +26,9 @@ GW/
 │   ├── 02-bw-optimize/       #   Blackwell Triton (tcgen05) 专项优化
 │   └── 03-perf-notes/        #   Triton 性能优化笔记
 │
-├── auto-commit.ps1            # 每日凌晨 3:00 自动提交脚本
+├── commit.bat                # 一键提交（双击运行，带窗口暂停）
+├── commit.ps1                # 一键提交（PowerShell 版，支持自定义 message）
+├── auto-commit.ps1            # 每日凌晨 3:00 自动提交脚本（任务计划）
 └── auto-commit.log            # 自动提交日志
 ```
 
