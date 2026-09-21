@@ -33,7 +33,8 @@ Write-Log "Changes detected:"
 $status -split "`n" | ForEach-Object { Write-Log "  $_" }
 
 # 添加所有修改
-git add -A
+git add -A 2>&1 | ForEach-Object { Write-Log "  add: $_" }
+Start-Sleep -Milliseconds 500
 Write-Log "git add -A done"
 
 # 提交（带时间戳）
